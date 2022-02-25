@@ -3,15 +3,20 @@ function loadData() {
     .then((response) => response.json())
     .then((json) => console.log(json));
 }
-function loadData() {
+
+//display user
+function loadUsers() {
   fetch("https://jsonplaceholder.typicode.com/users")
     .then((response) => response.json())
-    .then((data) => console.log(data));
+    .then((data) => displayUsers(data));
 }
-// loadData();
-function displayUsers(json) {
-  // const ul = document.getElementById('users');
-  for(const user of json){
+
+function displayUsers(data) {
+  const ul = document.getElementById('users');
+  for(const user of data){
     console.log(user.name);
+    const li = document.createElement('li');
+    li.innerText = `name: ${user.name}, email: ${user.email}`;
+    ul.appendChild(li);
   } 
 }
